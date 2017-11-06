@@ -31,6 +31,12 @@ Gridhook.configure do |config|
     # event is a Gridhook::Event object
     EmailEvent.create! event.attributes
   end
+
+  # By default, we'll permit and pass all parameters through to the event processor
+  # If you want to whitelist a subset of parameters, use the `whitelisted_params` to tell strong_parameters
+  # which attributes to permit
+  # e.g.
+  # config.whitelisted_params = [:email]
 end
 ```
 
