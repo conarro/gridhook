@@ -27,6 +27,11 @@ Gridhook.configure do |config|
   # The path we want to receive events
   config.event_receive_path = '/sendgrid/event'
 
+  # The controller + action to route events to (defaults to `gridhook/events#create`)
+  # Use this option if you need to subclass the Gridhook::EventsController
+  # (e.g. to add basic auth)
+  config.event_create_action = 'my_custom_events_controller#create'
+
   config.event_processor = proc do |event|
     # event is a Gridhook::Event object
     EmailEvent.create! event.attributes

@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  post Gridhook.config.event_receive_path => 'gridhook/events#create'
+  controller_action = Gridhook.config.event_create_action || 'gridhook/events#create'
+  post Gridhook.config.event_receive_path => controller_action
 end
